@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #FF2E63;
+  --primary-glow: rgba(255, 46, 99, 0.4);
+  --accent: #08D9D6;
+  --background: #0D0D11;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  @apply bg-[#08080A] text-white font-['Plus_Jakarta_Sans'] overflow-x-hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 46, 99, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(8, 217, 214, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, .font-heading {
+  @apply font-['Outfit'] tracking-tight;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 hover:bg-white/[0.08] hover:border-white/20;
+  }
+
+  .btn-primary {
+    @apply relative px-8 py-4 bg-primary text-white font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_var(--primary-glow)] active:scale-95;
+  }
+
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full transition-transform duration-500;
+  }
+
+  .btn-primary:hover::after {
+    @apply translate-x-full;
+  }
+
+  .nav-link {
+    @apply relative text-gray-400 font-semibold text-sm transition-colors hover:text-white;
+  }
+
+  .nav-link.active {
+    @apply text-white;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-full h-1 bg-primary rounded-full shadow-[0_0_10px_var(--primary-glow)];
+  }
+
+  .anime-card-zoom {
+    @apply transition-all duration-700 hover:scale-105;
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 40px -10px var(--primary-glow);
+  }
+
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:border-primary/50 focus:bg-white/10 outline-none transition-all duration-300 placeholder:text-gray-600;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-500;
+}
+
+.bg-mesh {
+  background: 
+    radial-gradient(at 0% 0%, rgba(255, 46, 99, 0.1) 0, transparent 50%), 
+    radial-gradient(at 100% 100%, rgba(8, 217, 214, 0.1) 0, transparent 50%);
+}
